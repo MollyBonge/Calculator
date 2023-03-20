@@ -1,6 +1,17 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Fade | FULL RELEASE", HidePremium = false, SaveConfig = true,IntroText = "Fade v1", ConfigFolder = "OrionTest"})
 
+--VAL
+_G.autoFly = true
+
+--FUNC
+function autoFly()
+	while _G.autoFly == true do
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/iWareDeveloper/iWare/main/iWare-main/iWare-main/iWareMISC/FLY'))()
+	wait(1)
+     end
+end
+
 --NOTIFICATION
 OrionLib:MakeNotification({
     Name = "Fade",
@@ -36,11 +47,13 @@ local Player = Window:MakeTab({
 	PremiumOnly = false
 })
 
-Player:AddButton({
-	Name = "Fly",
-	Callback = function()
-      		loadstring(game:HttpGet('https://raw.githubusercontent.com/iWareDeveloper/iWare/main/iWare-main/iWare-main/iWareMISC/FLY'))()
-  	end    
+Player:AddToggle({
+	Name = "Fly ( E )",
+	Default = false,
+	Callback = function(Value)
+		_G.autoFly = Value
+	autoFly()
+	end    
 })
 
 Player:AddButton({
